@@ -1,3 +1,4 @@
+using JwtBearerPOC.Model;
 using JwtBearerPOC.Services.TokenServ;
 
 
@@ -15,7 +16,17 @@ var app = builder.Build();
 
 
 
-app.MapGet("/", (TokenService service) => service.Generate(null));
+app.MapGet("/", (TokenService service) 
+    => service.Generate(
+        new User(
+            new Guid(), 
+            "i.arend@gmail.com", 
+            "Arend123@", 
+            new [] 
+            {
+                "student", "premium"
+            }
+            )));
 
 
 

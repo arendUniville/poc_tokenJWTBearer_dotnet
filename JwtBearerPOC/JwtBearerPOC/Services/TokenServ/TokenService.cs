@@ -29,6 +29,7 @@ public class TokenService
         //Criando o token descriptor para pegar o conteúdo
         var tokenDescriptor = new SecurityTokenDescriptor
         {
+            Subject = GenerateClaims(user),
             SigningCredentials = creadentials,
             Expires = DateTime.UtcNow.AddMinutes(10) //Expira em 10 minutos
         };

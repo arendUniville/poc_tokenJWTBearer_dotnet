@@ -2,6 +2,7 @@
 using JwtBearerPOC.Model;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace JwtBearerPOC.Services.TokenServ;
@@ -41,4 +42,26 @@ public class TokenService
         //Gera uma string do Token
         return handler.WriteToken(token);
     }
+
+
+
+    private static ClaimsIdentity GenerateClaims(User user)
+    {
+        var ci = new ClaimsIdentity();
+
+        //Criando uma claim
+        ci.AddClaim(new Claim(ClaimTypes.Name, user.Email));
+
+
+        //Passando pelas Roles do usuário
+        foreach(var role in user.Roles)
+        {
+            //Adicionando as roles como claims
+            ci.AddClaim(new Claim(ClaimTypes.Role, role));
+        }
+
+
+        return ci;
+    }
+
 }

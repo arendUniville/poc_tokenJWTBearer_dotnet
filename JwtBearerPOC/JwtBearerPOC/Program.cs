@@ -20,8 +20,8 @@ app.MapGet("/", (TokenService service)
     => service.Generate(
         new User(
             new Guid(), 
-            "i.arend@gmail.com", 
-            "Arend123@", 
+            "teste@gmail.com", 
+            "teste123@", 
             new [] 
             {
                 "student", "premium"

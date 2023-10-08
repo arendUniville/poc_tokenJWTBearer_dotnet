@@ -62,6 +62,13 @@ public class TokenService
         }
 
 
+        //Criando nova claim
+        foreach(var tenant in user.Tenant)
+        {
+            ci.AddClaim(new Claim($"tenant", tenant));
+        }
+
+
         return ci;
     }
 

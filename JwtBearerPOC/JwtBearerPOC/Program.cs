@@ -25,6 +25,10 @@ app.MapGet("/", (TokenService service)
             new [] 
             {
                 "student", "premium"
+            },
+            new[]
+            {
+                "type1", "type2"
             }
             )));
 
